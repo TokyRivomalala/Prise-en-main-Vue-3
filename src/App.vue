@@ -1,26 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>{{ joueur.email }}</h1>
+    <router-view />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import { reactive } from "vue";
+import { useStore } from "vuex";
+import { computed } from "vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+    name : 'App',
+    setup(){
+        // const state = reactive({
+        //     joueur : {
+        //         email : 'soa@gmail.com'
+        //     }
+        // })
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+        const store = useStore();
+        // const joueur  = computed( () => store.state.joueur );
+        const joueur  = computed( () => store.state.Joueur.joueur );
+
+        return{
+            joueur
+        }
+    }
 }
-</style>
+</script>>
+
+
+
